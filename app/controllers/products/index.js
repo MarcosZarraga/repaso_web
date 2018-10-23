@@ -6,7 +6,16 @@ export default Ember.Controller.extend({
 			this.store.createRecord('product',{
 				name: this.get('nombre'),
 				calories: this.get('calorias')
-			}).save();
+			}).save().then(()=>{
+				this.set("nombre","")
+				this.set("calorias","")
+			})
+		},
+		editarTemplate(product){
+			product.save();
+		},
+		eliminarTemplate(product){
+			product.destroyRecord();
 		}
 	}
 });

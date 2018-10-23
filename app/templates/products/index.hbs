@@ -9,3 +9,9 @@
 	<br>
 	<button>Añadir producto</button>
 </form>
+
+{{#each model as |product|}}
+ 	{{product-card title=product.name content=product.calories onUpdate=(action 'editarTemplate' product) 
+ 	onDelete=(action 'eliminarTemplate' product)}}
+{{/each}}
+
