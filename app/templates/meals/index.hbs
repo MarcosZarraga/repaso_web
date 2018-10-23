@@ -1,1 +1,19 @@
-{{outlet}}
+
+<form {{action 'crearMeal' on="submit"}}>
+	<p>Nombre</p>
+	{{input type="text" value=name}}
+	<br>
+	<button>Añadir meal</button>
+</form>
+<br>
+
+
+{{#each model as |meal|}}
+	{{#simple-card item=meal as |nombre mealId|}}
+		<div>
+			{{nombre}}
+			<button{{action 'borrarMeal' meal}}>Borrar</button>
+			{{link-to "ir a detail" 'meals.detail' meal.id }}
+		</div>
+	{{/simple-card}}
+{{/each}}
